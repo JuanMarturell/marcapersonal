@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ficha de marca | Curso Landing Pages con IA</title>
+<meta name="description" content="Completa tus datos de marca y descarga tu archivo para el Agente Landing Pages.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0A1A33;--brand:#004AAD;--paper:#F3F5F8;--line:#D9DEE6;--text:#1B2536;--muted:#5B6576;--err:#B42318}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:var(--paper);color:var(--text);line-height:1.55;font-size:16px}
+header{background:var(--ink);color:#fff;padding:2.6rem 1.25rem 5.5rem;text-align:center}
+header h1{font-family:"Playfair Display",Georgia,serif;font-weight:600;font-size:clamp(1.7rem,4vw,2.4rem);margin:.4rem 0 .6rem}
+header p{margin:0 auto;max-width:560px;color:#C9D6EA}
+.tag{display:inline-block;border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:.3rem .9rem;font-size:.85rem;color:#C9D6EA}
+main{max-width:760px;margin:-3.5rem auto 3rem;padding:0 1rem}
+form{background:#fff;border-radius:18px;box-shadow:0 20px 50px rgba(10,26,51,.12);padding:2rem}
+fieldset{border:0;margin:0 0 1.8rem;padding:0}
+legend{font-family:"Playfair Display",Georgia,serif;font-size:1.35rem;color:var(--ink);padding:0;margin-bottom:.3rem}
+.sub{color:var(--muted);font-size:.92rem;margin:0 0 1.1rem}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+#f fieldset:nth-of-type(3) .grid{grid-template-columns:1fr}
+.full{grid-column:1/-1}
+label{display:block;font-weight:600;font-size:.9rem;margin-bottom:.35rem;color:var(--ink)}
+label em{color:var(--brand);font-style:normal}
+label small{font-weight:400;color:var(--muted)}
+input[type=text],input[type=email],input[type=tel],input[type=url]{width:100%;min-height:48px;padding:.7rem .9rem;border:1.5px solid var(--line);border-radius:10px;font:inherit;font-size:16px;background:var(--paper)}
+input:focus{outline:none;border-color:var(--brand);background:#fff;box-shadow:0 0 0 4px rgba(0,74,173,.12)}
+.bad input{border-color:var(--err);background:#FFF6F5}
+.err{display:none;color:var(--err);font-size:.84rem;margin-top:.3rem}
+.bad .err{display:block}
+.color{display:flex;gap:.6rem;align-items:center}
+.color input[type=color]{width:52px;height:48px;border:1.5px solid var(--line);border-radius:10px;padding:3px;background:#fff;cursor:pointer;flex-shrink:0}
+.color input[type=text]{text-transform:lowercase}
+.color input[type=color].empty{opacity:.35;background:repeating-linear-gradient(45deg,#fff 0 6px,#e6e9ee 6px 12px)}
+.check{display:flex;gap:.5rem;align-items:center;font-weight:400;font-size:.88rem;color:var(--muted);margin-top:.45rem}
+.check input{width:18px;height:18px}
+button[type=submit]{width:100%;min-height:54px;border:0;border-radius:999px;background:var(--brand);color:#fff;font:600 1.05rem Inter,sans-serif;cursor:pointer}
+button[type=submit]:hover{background:#003C8F}
+.note{font-size:.88rem;color:var(--muted);text-align:center;margin-top:1rem}
+.done{display:none;margin-top:1.4rem;padding:1.2rem 1.3rem;border-radius:12px;background:#E9F1FC;border:1px solid #BCD2F2}
+.done.show{display:block}
+.done b{color:var(--ink)}
+.done ol{margin:.6rem 0 0;padding-left:1.2rem}
+
+.sug{flex-shrink:0;min-height:48px;padding:0 .9rem;border:1.5px solid var(--brand);border-radius:10px;background:#fff;color:var(--brand);font:600 .85rem Inter,sans-serif;cursor:pointer;width:auto}
+.sug:hover{background:#E9F1FC}
+.pal{position:fixed;inset:0;background:rgba(10,26,51,.55);display:flex;align-items:center;justify-content:center;padding:1rem;z-index:100}
+.pal[hidden]{display:none}
+.pal-box{background:#fff;border-radius:16px;width:min(760px,100%);max-height:90vh;display:flex;flex-direction:column;box-shadow:0 30px 70px rgba(0,0,0,.35)}
+.pal-head{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 1.3rem .2rem}
+.pal-head h2{font-family:"Playfair Display",Georgia,serif;font-size:1.4rem;margin:0;color:var(--ink)}
+.pal-x{width:44px;min-height:44px;border:0;background:transparent;font-size:1.9rem;line-height:1;color:var(--muted);cursor:pointer;border-radius:50%}
+.pal-x:hover{background:var(--paper);color:var(--ink)}
+.pal-sub{margin:0;padding:0 1.3rem .8rem;color:var(--muted);font-size:.92rem;border-bottom:1px solid var(--line)}
+.pal-body{overflow-y:auto;padding:.4rem 1.3rem 1.3rem}
+.pal-body h3{font-size:.95rem;color:var(--ink);margin:1.1rem 0 .6rem}
+.sw-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:.6rem}
+.sw{display:flex;flex-direction:column;align-items:stretch;gap:.3rem;padding:.4rem;min-height:0;border:1.5px solid var(--line);border-radius:10px;background:#fff;color:var(--text);cursor:pointer;text-align:left;font:inherit;width:auto}
+.sw:hover,.sw:focus-visible{border-color:var(--brand);background:#fff}
+.sw span{display:block;height:44px;border-radius:6px;border:1px solid rgba(0,0,0,.08)}
+.sw b{font-size:.78rem;font-weight:600;line-height:1.2}
+.sw code{font-size:.75rem;color:var(--muted)}
+@media (max-width:600px){.sw-grid{grid-template-columns:repeat(2,1fr)}.sug{padding:0 .7rem}}
+@media (max-width:600px){.grid{grid-template-columns:1fr}form{padding:1.4rem}}
+</style>
+</head>
+<body>
+<header>
+  <span class="tag">Curso Landing Pages con Inteligencia Artificial</span>
+  <h1>Tu ficha de marca</h1>
+  <p>Completa tus datos una sola vez. Al terminar se descarga un archivo que subes a tu agente, para que no vuelva a preguntarte esta información.</p>
+</header>
+<main>
+<form id="f" novalidate>
+  <fieldset>
+    <legend>Datos profesionales</legend>
+    <p class="sub">Los campos con * son obligatorios.</p>
+    <div class="grid">
+      <div class="field"><label for="nombre">Nombre profesional <em>*</em></label><input type="text" id="nombre" required autocomplete="name"><p class="err">Escribe tu nombre.</p></div>
+      <div class="field"><label for="marca">Marca <em>*</em></label><input type="text" id="marca" required placeholder="Ej. Ana López Realtor"><p class="err">Escribe el nombre de tu marca.</p></div>
+      <div class="field"><label for="broker">Broker <em>*</em></label><input type="text" id="broker" required><p class="err">Escribe el nombre de tu broker.</p></div>
+      <div class="field"><label for="licencia">Licencia <small>(opcional)</small></label><input type="text" id="licencia" placeholder="Ej. SL1234567"></div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Contacto</legend>
+    <div class="grid">
+      <div class="field"><label for="whatsapp">WhatsApp <em>*</em> <small>con código de país</small></label><input type="tel" id="whatsapp" required placeholder="+1 407 000 0000" inputmode="tel"><p class="err">Escribe tu número con código de país, por ejemplo +1 407 000 0000.</p></div>
+      <div class="field"><label for="telefono">Teléfono <small>(si es distinto)</small></label><input type="tel" id="telefono" placeholder="Igual al WhatsApp" inputmode="tel"></div>
+      <div class="field"><label for="correo">Correo <em>*</em></label><input type="email" id="correo" required autocomplete="email"><p class="err">Escribe un correo válido.</p></div>
+      <div class="field"><label for="web">Sitio web <small>(opcional)</small></label><input type="url" id="web" placeholder="https://"></div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Colores de marca</legend>
+    <p class="sub">Toca el cuadro para elegir el color, o escribe su código HEX (por ejemplo #1a2b3c). Deja en blanco los que no uses.</p>
+    <div class="grid">
+      <div class="field full" data-color="c1"><label for="c1t">Color principal <em>*</em></label><div class="color"><input type="color" id="c1p" class="empty" value="#ffffff" aria-label="Selector del color principal"><input type="text" id="c1t" maxlength="7" placeholder="#______"><button type="button" class="sug" data-for="c1" data-label="color principal">Ver sugerencias</button></div><p class="err">Elige tu color principal o escribe un código HEX válido.</p></div>
+      <div class="field" data-color="c2"><label for="c2t">Color secundario <small>(opcional)</small></label><div class="color"><input type="color" id="c2p" class="empty" value="#ffffff" aria-label="Selector del color secundario"><input type="text" id="c2t" maxlength="7" placeholder="#______"><button type="button" class="sug" data-for="c2" data-label="color secundario">Ver sugerencias</button></div><p class="err">Usa un código HEX válido.</p></div>
+      <div class="field" data-color="c3"><label for="c3t">Color complementario <small>(opcional)</small></label><div class="color"><input type="color" id="c3p" class="empty" value="#ffffff" aria-label="Selector del color complementario"><input type="text" id="c3t" maxlength="7" placeholder="#______"><button type="button" class="sug" data-for="c3" data-label="color complementario">Ver sugerencias</button></div><p class="err">Usa un código HEX válido.</p></div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Redes sociales</legend>
+    <p class="sub">Pega el enlace completo de cada perfil. Deja en blanco las que no uses.</p>
+    <div class="grid">
+      <div class="field"><label for="ig">Instagram</label><input type="url" id="ig" placeholder="https://www.instagram.com/usuario"></div>
+      <div class="field"><label for="tt">TikTok</label><input type="url" id="tt" placeholder="https://www.tiktok.com/@usuario"></div>
+      <div class="field"><label for="fb">Facebook</label><input type="url" id="fb" placeholder="https://www.facebook.com/pagina"></div>
+      <div class="field"><label for="li">LinkedIn</label><input type="url" id="li" placeholder="https://www.linkedin.com/in/usuario"></div>
+      <div class="field full"><label for="yt">YouTube</label><input type="url" id="yt" placeholder="https://www.youtube.com/@canal"></div>
+    </div>
+  </fieldset>
+
+  <button type="submit">Descargar mi ficha de marca</button>
+  <p class="note">Tus datos no se envían a ningún lugar: el archivo se crea en tu propio dispositivo.</p>
+
+  <div class="done" id="done" role="status" aria-live="polite">
+    <b>Listo. Se descargó tu archivo <span id="fname"></span>.</b>
+    <ol>
+      <li>Súbelo a tu agente (Knowledge del GPT o conversación de Claude).</li>
+      <li>Sube también tu logo, los logos de tu broker y los íconos de tus redes.</li>
+    </ol>
+  </div>
+</form>
+</main>
+<div class="pal" id="pal" hidden>
+  <div class="pal-box" role="dialog" aria-modal="true" aria-labelledby="palT">
+    <div class="pal-head"><h2 id="palT">50 colores sugeridos</h2><button type="button" class="pal-x" id="palX" aria-label="Cerrar sugerencias">×</button></div>
+    <p class="pal-sub">Toca un color para usarlo en <b id="palFor">tu color</b>.</p>
+    <div class="pal-body"><h3>Azules</h3><div class="sw-grid"><button type="button" class="sw" data-hex="#0a1f44"><span style="background:#0a1f44"></span><b>Azul marino</b><code>#0a1f44</code></button><button type="button" class="sw" data-hex="#132a4f"><span style="background:#132a4f"></span><b>Azul medianoche</b><code>#132a4f</code></button><button type="button" class="sw" data-hex="#1d4ed8"><span style="background:#1d4ed8"></span><b>Azul real</b><code>#1d4ed8</code></button><button type="button" class="sw" data-hex="#004aad"><span style="background:#004aad"></span><b>Azul corporativo</b><code>#004aad</code></button><button type="button" class="sw" data-hex="#3b6e9e"><span style="background:#3b6e9e"></span><b>Azul acero</b><code>#3b6e9e</code></button><button type="button" class="sw" data-hex="#5aa9e6"><span style="background:#5aa9e6"></span><b>Azul cielo</b><code>#5aa9e6</code></button><button type="button" class="sw" data-hex="#475f7b"><span style="background:#475f7b"></span><b>Azul pizarra</b><code>#475f7b</code></button><button type="button" class="sw" data-hex="#1b4b5a"><span style="background:#1b4b5a"></span><b>Azul petróleo</b><code>#1b4b5a</code></button><button type="button" class="sw" data-hex="#0e9aa7"><span style="background:#0e9aa7"></span><b>Turquesa</b><code>#0e9aa7</code></button><button type="button" class="sw" data-hex="#dbe9f6"><span style="background:#dbe9f6"></span><b>Azul hielo</b><code>#dbe9f6</code></button></div><h3>Verdes</h3><div class="sw-grid"><button type="button" class="sw" data-hex="#1f4d3a"><span style="background:#1f4d3a"></span><b>Verde bosque</b><code>#1f4d3a</code></button><button type="button" class="sw" data-hex="#0f8a5f"><span style="background:#0f8a5f"></span><b>Verde esmeralda</b><code>#0f8a5f</code></button><button type="button" class="sw" data-hex="#8aa899"><span style="background:#8aa899"></span><b>Verde salvia</b><code>#8aa899</code></button><button type="button" class="sw" data-hex="#6b7a3a"><span style="background:#6b7a3a"></span><b>Verde oliva</b><code>#6b7a3a</code></button><button type="button" class="sw" data-hex="#b8e0d2"><span style="background:#b8e0d2"></span><b>Verde menta</b><code>#b8e0d2</code></button><button type="button" class="sw" data-hex="#2a7f7a"><span style="background:#2a7f7a"></span><b>Verde azulado</b><code>#2a7f7a</code></button><button type="button" class="sw" data-hex="#4f6b44"><span style="background:#4f6b44"></span><b>Verde musgo</b><code>#4f6b44</code></button><button type="button" class="sw" data-hex="#c5d86d"><span style="background:#c5d86d"></span><b>Verde lima suave</b><code>#c5d86d</code></button><button type="button" class="sw" data-hex="#234f3d"><span style="background:#234f3d"></span><b>Verde pino</b><code>#234f3d</code></button><button type="button" class="sw" data-hex="#5e8c7f"><span style="background:#5e8c7f"></span><b>Verde eucalipto</b><code>#5e8c7f</code></button></div><h3>Neutros</h3><div class="sw-grid"><button type="button" class="sw" data-hex="#1c1c1e"><span style="background:#1c1c1e"></span><b>Negro carbón</b><code>#1c1c1e</code></button><button type="button" class="sw" data-hex="#3a3d42"><span style="background:#3a3d42"></span><b>Gris grafito</b><code>#3a3d42</code></button><button type="button" class="sw" data-hex="#6b7280"><span style="background:#6b7280"></span><b>Gris acero</b><code>#6b7280</code></button><button type="button" class="sw" data-hex="#919191"><span style="background:#919191"></span><b>Gris plata</b><code>#919191</code></button><button type="button" class="sw" data-hex="#d9d9d9"><span style="background:#d9d9d9"></span><b>Gris perla</b><code>#d9d9d9</code></button><button type="button" class="sw" data-hex="#f5f1e8"><span style="background:#f5f1e8"></span><b>Blanco hueso</b><code>#f5f1e8</code></button><button type="button" class="sw" data-hex="#d8c3a5"><span style="background:#d8c3a5"></span><b>Arena</b><code>#d8c3a5</code></button><button type="button" class="sw" data-hex="#e8dcc8"><span style="background:#e8dcc8"></span><b>Beige</b><code>#e8dcc8</code></button><button type="button" class="sw" data-hex="#8b7d6b"><span style="background:#8b7d6b"></span><b>Taupe</b><code>#8b7d6b</code></button><button type="button" class="sw" data-hex="#ffffff"><span style="background:#ffffff"></span><b>Blanco</b><code>#ffffff</code></button></div><h3>Cálidos</h3><div class="sw-grid"><button type="button" class="sw" data-hex="#c9a227"><span style="background:#c9a227"></span><b>Dorado</b><code>#c9a227</code></button><button type="button" class="sw" data-hex="#a8842c"><span style="background:#a8842c"></span><b>Oro viejo</b><code>#a8842c</code></button><button type="button" class="sw" data-hex="#d4a017"><span style="background:#d4a017"></span><b>Mostaza</b><code>#d4a017</code></button><button type="button" class="sw" data-hex="#f0a202"><span style="background:#f0a202"></span><b>Ámbar</b><code>#f0a202</code></button><button type="button" class="sw" data-hex="#c2571a"><span style="background:#c2571a"></span><b>Naranja quemado</b><code>#c2571a</code></button><button type="button" class="sw" data-hex="#b5543a"><span style="background:#b5543a"></span><b>Terracota</b><code>#b5543a</code></button><button type="button" class="sw" data-hex="#f08a6c"><span style="background:#f08a6c"></span><b>Coral</b><code>#f08a6c</code></button><button type="button" class="sw" data-hex="#fffc00"><span style="background:#fffc00"></span><b>Amarillo brillante</b><code>#fffc00</code></button><button type="button" class="sw" data-hex="#f6c7a8"><span style="background:#f6c7a8"></span><b>Durazno</b><code>#f6c7a8</code></button><button type="button" class="sw" data-hex="#b87333"><span style="background:#b87333"></span><b>Cobre</b><code>#b87333</code></button></div><h3>Rojos y morados</h3><div class="sw-grid"><button type="button" class="sw" data-hex="#6d1a2c"><span style="background:#6d1a2c"></span><b>Rojo vino</b><code>#6d1a2c</code></button><button type="button" class="sw" data-hex="#800020"><span style="background:#800020"></span><b>Burdeos</b><code>#800020</code></button><button type="button" class="sw" data-hex="#c8102e"><span style="background:#c8102e"></span><b>Rojo cereza</b><code>#c8102e</code></button><button type="button" class="sw" data-hex="#e8b4b8"><span style="background:#e8b4b8"></span><b>Rosa palo</b><code>#e8b4b8</code></button><button type="button" class="sw" data-hex="#b0306a"><span style="background:#b0306a"></span><b>Magenta</b><code>#b0306a</code></button><button type="button" class="sw" data-hex="#5b2a86"><span style="background:#5b2a86"></span><b>Morado real</b><code>#5b2a86</code></button><button type="button" class="sw" data-hex="#b8a9d9"><span style="background:#b8a9d9"></span><b>Lavanda</b><code>#b8a9d9</code></button><button type="button" class="sw" data-hex="#5e2750"><span style="background:#5e2750"></span><b>Ciruela</b><code>#5e2750</code></button><button type="button" class="sw" data-hex="#a7727f"><span style="background:#a7727f"></span><b>Malva</b><code>#a7727f</code></button><button type="button" class="sw" data-hex="#7c4dff"><span style="background:#7c4dff"></span><b>Violeta</b><code>#7c4dff</code></button></div></div>
+  </div>
+</div>
+<script>
+(function(){
+  var P='[pendiente, si aplica]';
+  var $=function(id){return document.getElementById(id)};
+  var hexRe=/^#[0-9a-f]{6}$/i;
+  // sincronizar selectores de color
+  ['c1','c2','c3'].forEach(function(c){
+    var p=$(c+'p'),t=$(c+'t');
+    function pick(){t.value=p.value;p.classList.remove('empty');mark(t.closest('.field'),false)}
+    p.addEventListener('input',pick);p.addEventListener('change',pick);
+    t.addEventListener('input',function(){var v=t.value.trim();if(v&&v[0]!=='#')v='#'+v;if(hexRe.test(v)){p.value=v.toLowerCase();p.classList.remove('empty')}else if(!v){p.classList.add('empty')}});
+  });
+
+  var pal=$('pal'),target=null,opener=null;
+  document.querySelectorAll('.sug').forEach(function(b){b.addEventListener('click',function(){target=b.dataset.for;opener=b;$('palFor').textContent=b.dataset.label;pal.hidden=false;document.body.style.overflow='hidden';pal.querySelector('.sw').focus()})});
+  function closePal(){pal.hidden=true;document.body.style.overflow='';if(opener)opener.focus()}
+  $('palX').addEventListener('click',closePal);
+  pal.addEventListener('click',function(e){if(e.target===pal)closePal()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!pal.hidden)closePal()});
+  pal.querySelectorAll('.sw').forEach(function(sw){sw.addEventListener('click',function(){
+    var h=sw.dataset.hex,t=$(target+'t'),p=$(target+'p');t.value=h;p.value=h;p.classList.remove('empty');mark(t.closest('.field'),false);closePal()})});
+  function mark(f,bad){f.classList.toggle('bad',bad)}
+  function val(id){return $(id).value.trim()}
+  function or(v){return v?v:P}
+  function digits(v){return v.replace(/\D/g,'')}
+  function phone(v){var d=digits(v);return d?'+'+d:''}
+  function hex(c){var v=val(c+'t');if(v&&v[0]!=='#')v='#'+v;return v.toLowerCase()}
+  function slug(s){return s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'')||'realtor'}
+
+  $('f').addEventListener('submit',function(e){
+    e.preventDefault();
+    var ok=true,first=null;
+    function need(id,test){var f=$(id).closest('.field'),bad=!test(val(id));mark(f,bad);if(bad){ok=false;if(!first)first=$(id)}}
+    need('nombre',function(v){return v.length>1});
+    need('marca',function(v){return v.length>1});
+    need('broker',function(v){return v.length>1});
+    need('whatsapp',function(v){return digits(v).length>=10});
+    need('correo',function(v){return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)});
+    ['c1','c2','c3'].forEach(function(c){var h=hex(c),f=$(c+'t').closest('.field');var bad=(c==='c1'||h)&&!hexRe.test(h);mark(f,bad);if(bad){ok=false;if(!first)first=$(c+'t')}});
+    if(!ok){first.focus();return;}
+
+    var nombre=val('nombre'),broker=val('broker'),lic=val('licencia');
+    var wa=phone(val('whatsapp')),tel=phone(val('telefono'))||wa;
+    var md=[
+      '# Marca y contacto — '+nombre,'',
+      'Este documento reemplaza la "Ronda 3" del intake (marca y contacto). El GPT no debe volver a preguntar estos datos — debe tomarlos directo de aquí y solo preguntar por el proyecto y el modelo/propiedad.','',
+      '- **Nombre profesional:** '+nombre,
+      '- **Marca:** '+val('marca'),
+      '- **Broker:** '+broker,
+      '- **Licencia:** '+or(lic),
+      '- **WhatsApp:** '+wa+' (enlace: https://wa.me/'+digits(wa)+')',
+      '- **Teléfono:** '+tel,
+      '- **Correo:** '+val('correo'),
+      '- **Sitio web:** '+or(val('web')),
+      '- **Color principal:** '+hex('c1'),
+      '- **Color secundario:** '+or(hex('c2')),
+      '- **Color complementario:** '+or(hex('c3')),
+      '- **Logo principal:** [sube el archivo en Knowledge junto con este documento]',
+      '- **Logos institucionales:** [sube los archivos en Knowledge junto con este documento]',
+      '- **Íconos de redes (Facebook/Instagram/TikTok) para el footer:** subidos como archivos de imagen en Knowledge — úsalos ahí, no generes íconos propios ni los busques en internet',
+      '- **Instagram:** '+or(val('ig')),
+      '- **TikTok:** '+or(val('tt')),
+      '- **Facebook:** '+or(val('fb')),
+      '- **LinkedIn:** '+or(val('li')),
+      '- **YouTube:** '+or(val('yt')),
+      '- **Disclosures (genéricos, borrador — no reemplaza asesoría legal):**',
+      '  - "'+nombre+', Realtor® — Lic. '+or(lic)+' — '+broker+'."',
+      '  - "La información aquí presentada se considera confiable pero no está garantizada, y puede cambiar sin previo aviso."',
+      '  - "Equal Housing Opportunity — Igualdad de Oportunidad de Vivienda."',''
+    ].join('\n');
+
+    var name='marca-'+slug(nombre)+'.md';
+    var blob=new Blob([md],{type:'text/markdown;charset=utf-8'});
+    var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;
+    document.body.appendChild(a);a.click();
+    setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},1000);
+    $('fname').textContent=name;$('done').classList.add('show');
+    $('done').scrollIntoView({behavior:'smooth',block:'center'});
+  });
+})();
+</script>
+</body>
+</html>
